@@ -4,8 +4,8 @@ import com.example.mvvmsample.BuildConfig
 import com.example.mvvmsample.constants.ServerConstants.BASE_URL
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
-import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 
 
 object RetrofitClient {
@@ -21,7 +21,7 @@ object RetrofitClient {
         })
         .build()
 
-    /**
+    /**a
      * Create an instance of Retrofit object
      */
     val retrofitInstance: Retrofit?
