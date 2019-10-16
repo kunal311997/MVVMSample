@@ -2,6 +2,7 @@ package com.example.mvvmsample.activities
 
 import android.util.Log
 import android.view.View
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.mvvmsample.data.repositories.UserRepository
@@ -13,15 +14,21 @@ import kotlinx.coroutines.launch
 import retrofit2.Response
 
 class LoginViewModel(private val userRepository: UserRepository) : ViewModel() {
+
     var email: String? = "";
     var password: String? = "";
 
     var loginResult = MutableLiveData<LoginResponse>()
     var loginForm = MutableLiveData<String>()
-    var isLoading: MutableLiveData<Boolean> = MutableLiveData(true)
+
+    private val _error = MutableLiveData<String>()
+    val error: LiveData<String> = _error
+
+    var isLoading = MutableLiveData<Boolean>()
+    //val isLoading: LiveData<Boolean> = _isLoading
+
 
     fun onLoginButtonClicked(view: View) {
-        isLoading.value = true
         if (!email.toString().equals("")) {
             if (!password.equals("")) {
                 login(email.toString(), password.toString())

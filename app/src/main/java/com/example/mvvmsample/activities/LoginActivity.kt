@@ -30,6 +30,7 @@ class LoginActivity : AppCompatActivity() {
         viewModel = ViewModelProviders.of(this, factory).get(LoginViewModel::class.java)
 
         binding.viewmodel = viewModel
+        binding.setLifecycleOwner(this)
         setObservers()
 
     }
