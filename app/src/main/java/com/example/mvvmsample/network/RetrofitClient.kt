@@ -21,7 +21,7 @@ object RetrofitClient {
         })
         .build()
 
-    /**a
+    /**
      * Create an instance of Retrofit object
      */
     val retrofitInstance: Retrofit?

@@ -14,12 +14,10 @@ import com.example.mvvmsample.network.RetrofitClient
 
 class LoginActivity : AppCompatActivity() {
 
-
     lateinit var viewModel: LoginViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
 
         val retrofit = RetrofitClient
         val repository = UserRepository(retrofit)
