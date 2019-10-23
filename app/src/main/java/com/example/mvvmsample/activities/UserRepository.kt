@@ -1,18 +1,17 @@
 package com.example.mvvmsample.data.repositories
 
+import android.content.Context
 import com.example.mvvmsample.model.LoginResponse
 import com.example.mvvmsample.network.ApiCalls
 import com.example.mvvmsample.network.RetrofitClient
 import com.example.mvvmsample.network.SafeApiRequest
-import retrofit2.Response
+import javax.inject.Inject
 
 class UserRepository(
-    val retrofit: RetrofitClient
 
 ) : SafeApiRequest() {
 
-
-    /*fun userLogin(email: String, password: String): LiveData<LoginResponse> {
+/*    fun userLogin1(email: String, password: String): LiveData<LoginResponse> {
         val loginResponse = MutableLiveData<LoginResponse>()
 
         val map = HashMap<String, String>()
@@ -20,7 +19,7 @@ class UserRepository(
         map.put("password", password)
 
 
-        //val apiService = retrofit.retrofitInstance?.create(ApiCalls::class.java)
+        val apiService = retrofit.retrofitInstance?.create(ApiCalls::class.java)
         val call = ApiCalls()?.login(map)
         call?.enqueue(object : Callback<LoginResponse> {
             override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) {
@@ -37,13 +36,13 @@ class UserRepository(
     }*/
 
 
-    suspend fun userLogin(email: String, password: String):  LoginResponse {
+    suspend fun userLogin(email: String, password: String): LoginResponse {
         val map = HashMap<String, String>()
         map.put("email", email)
         map.put("password", password)
 
-        return  apiRequest {
-              ApiCalls()!!.login(map)
+        return apiRequest {
+            ApiCalls()!!.login(map)
         }
 
     }

@@ -44,18 +44,18 @@ class LoginViewModel(private val userRepository: UserRepository) : ViewModel() {
 
     fun login(email: String, password: String) {
         isLoading.value = true
+
         main {
             isLoading.postValue(false)
 
             try {
-                val result:  LoginResponse = userRepository.userLogin(email, password)
+                val result: LoginResponse = userRepository.userLogin(email, password)
                 loginResult.postValue(result)
             } catch (e: ApiException) {
                 loginForm.postValue(e.message)
             }
 
         }
-
     }
 
     override fun onCleared() {
